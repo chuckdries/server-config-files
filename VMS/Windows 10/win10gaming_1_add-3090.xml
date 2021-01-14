@@ -170,7 +170,7 @@
       <driver name='vfio'/>
       <source>
         <!-- NVIDIA display -->
-        <address domain='0x0000' bus='0x23' slot='0x00' function='0x0'/>
+        <address domain='0x0000' bus='0x2d' slot='0x00' function='0x0'/>
       </source>
       <rom file='/mnt/user/install/VMs/nvidia3090fe.rom'/>
       <address type='pci' domain='0x0000' bus='0x06' slot='0x00' function='0x0'/>
@@ -179,7 +179,7 @@
       <driver name='vfio'/>
       <source>
         <!-- NVIDIA sound -->
-        <address domain='0x0000' bus='0x23' slot='0x00' function='0x1'/>
+        <address domain='0x0000' bus='0x2d' slot='0x00' function='0x1'/>
       </source>
       <address type='pci' domain='0x0000' bus='0x07' slot='0x00' function='0x0'/>
     </hostdev>

@@ -15,19 +15,29 @@ body {
 }
 #directory {
   padding: 1em;
-  border-radius: 5px;
-  width: 450px;
 }
-h1, h2 {
+.link-list-container {
+  display: flex;
+  flex-direction: row;
+}
+#wan-links {
+  margin-right: 80px;
+}
+h2, h3 {
   margin: 0
 }
 h2 {
+  font-size: 1em;
+  color: grey;
+}
+h3 {
   font-size: 1.3em;
 }
 span {
   color: grey;
 }
 ul {
+  margin: 0;
   padding: 0;
 }
 li {
@@ -45,7 +55,7 @@ a {
   transition: all .2s;
   box-shadow: none;
 }
-h2:after {
+h3:after {
   content: "\279C";
   margin-left: 3px;
   transform: translate(0px);
@@ -56,17 +66,19 @@ a:hover {
   border-color: grey;
   box-shadow: 2px 2px grey;
 }
-a:hover h2 {
+a:hover h3 {
   text-decoration: underline;
 }
-a:hover h2:after {
+a:hover h3:after {
   text-decoration: none !important;
   transform: translate(3px)
 }
 
-@media screen and (max-width: 450px) {
-  #directory {
-    width: 100%;
-    padding: 1em;
+@media screen and (max-width: 500px) {
+  .link-list-container {
+    flex-direction: column;
   }
+}
+.hidden-on-wan {
+  display: none;
 }

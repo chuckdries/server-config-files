@@ -12,24 +12,96 @@
 <body>
   <div id="directory">
     <h1>Chuck's Server Directory</h1>
-    <ul>
-      <li><a href="https://nextcloud.chuckdries.com">
-          <h2>Nextcloud</h2><span>nextcloud.chuckdries.com</span>
-        </a></li>
-      <li><a href="https://homeassistant.chuckdries.com">
-          <h2>Home Assistant</h2><span>homeassistant.chuckdries.com</span>
-        </a></li>
-      <li><a href="https://git.chuckdries.com">
-          <h2>Gitea</h2><span>git.chuckdries.com</span>
-        </a></li>
-      <li><a href="https://passwords.chuckdries.com">
-          <h2>Bitwarden</h2><span>passwords.chuckdries.com</span>
-        </a></li>
-      <li><a href="https://minecraft.chuckdries.com">
-          <h2>Minecraft map</h2><span>minecraft.chuckdries.com</span>
-        </a></li>
-    </ul>
+    <div class="link-list-container">
+      <div id="wan-links" class="link-list">
+        <h2 class="hidden-on-wan">WAN links</h2>
+        <ul>
+          <li><a href="https://nextcloud.chuckdries.com">
+              <h3>Nextcloud</h3><span>nextcloud.chuckdries.com</span>
+            </a></li>
+          <li><a href="https://homeassistant.chuckdries.com">
+              <h3>Home Assistant</h3><span>homeassistant.chuckdries.com</span>
+            </a></li>
+          <li><a href="https://git.chuckdries.com">
+              <h3>Gitea</h3><span>git.chuckdries.com</span>
+            </a></li>
+          <li><a href="https://passwords.chuckdries.com">
+              <h3>Bitwarden</h3><span>passwords.chuckdries.com</span>
+            </a></li>
+          <li><a href="https://minecraft.chuckdries.com">
+              <h3>Minecraft map</h3><span>minecraft.chuckdries.com</span>
+            </a></li>
+            <li><a href="https://plex.chuckdries.com">
+              <h3>Plex</h3><span>plex.chuckdries.com</span>
+            </a></li>
+        </ul>
+      </div>
+      <div id="lan-links" class="hidden-on-wan link-list">
+        <h2>LAN links</h2>
+        <ul>
+          <li>
+            <a href="http://10.10.11.250">
+              <h3>UnRaid</h3>
+              <span>10.10.11.250</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://10.10.11.250:9091/">
+              <h3>Transmission</h3>
+              <span>10.10.11.250:9091</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://10.10.11.250:8200/">
+              <h3>Duplicati</h3>
+              <span>10.10.11.250:8200</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://10.10.11.250:8443/">
+              <h3>Unifi Controller</h3>
+              <span>10.10.11.250:8443/</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://10.10.11.250:8448/">
+              <h3>MineOS</h3>
+              <span>10.10.11.250:8448/</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://10.10.11.250:32400/web">
+              <h3>Plex</h3>
+              <span>10.10.11.250:32400/web</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://10.10.11.250:3000/">
+              <h3>Grafana</h3>
+              <span>10.10.11.250:3000</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
+  <script>
+    async function checkLan() {
+      const isOnLan = await fetch("http://10.10.11.250:8081/.is-on-lan").then(d => d.text());
+      console.log(isOnLan)
+      if (isOnLan) {
+        console.log('lan')
+        const unhideElements = document.getElementsByClassName('hidden-on-wan');
+        const els = [...unhideElements]
+        for (let element of els) {
+          // const element = unhideElements.item(i);
+          console.log(element)
+          element.classList.remove('hidden-on-wan')
+        }
+      }
+    }
+    checkLan()
+  </script>
 </body>
 
 </html>

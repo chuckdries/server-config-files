@@ -40,6 +40,12 @@
         <h2>LAN links</h2>
         <ul>
           <li>
+            <a href="http://10.10.11.1">
+              <h3>pfSense</h3>
+              <span>10.10.11.1</span>
+            </a>
+          </li>
+          <li>
             <a href="http://10.10.11.250">
               <h3>UnRaid</h3>
               <span>10.10.11.250</span>
@@ -87,7 +93,7 @@
   </div>
   <script>
     async function checkLan() {
-      const isOnLan = await fetch("http://10.10.11.250:8081/.is-on-lan").then(d => d.text());
+      const isOnLan = await fetch("https://lan.chuckdries.com/.is-on-lan").then(d => d.text());
       console.log(isOnLan)
       if (isOnLan) {
         console.log('lan')

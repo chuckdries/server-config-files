@@ -78,6 +78,9 @@ a:hover h3:after {
   .link-list-container {
     flex-direction: column;
   }
+  #wan-links {
+    margin-right: 0;
+  }
 }
 .hidden-on-wan {
   display: none;
